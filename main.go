@@ -5,7 +5,7 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/yeseh/zenith-mgmt/deployment"
+	"github.com/yeseh/zenith/mgmt/deployment"
 )
 
 func main() {

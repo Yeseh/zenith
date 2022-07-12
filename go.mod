@@ -1,4 +1,4 @@
-module github.com/yeseh/zenith-mgmt
+module github.com/yeseh/zenith/mgmt
 
 go 1.18
 
