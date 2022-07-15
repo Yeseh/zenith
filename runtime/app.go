@@ -12,6 +12,7 @@ import (
 var appContainerMap map[string]string = make(map[string]string)
 
 type StartAppResponse struct {
+	Success     bool   `json:"success"`
 	Message     string `json:"message"`
 	ContainerID string `json:"containerId"`
 	Image       string `json:"image"`

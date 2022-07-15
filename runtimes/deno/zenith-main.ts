@@ -4,6 +4,14 @@ import { functionMap } from "./functions.ts"
 const PORT = Number(Deno.env.get("ZENITH_APP_PORT") ?? "80");
 const BASE_URL = `http://localhost:${PORT}`;
 
+/* 
+  This file serves as the entrypoint for the Zenith app container.
+  It injects the user provided functions through 'functionMap' and routes based on 
+  URLPatterns.
+
+  TODO: Basic authorization with a function key
+*/
+
 for (const [key, _] of functionMap) {
   const msg = `Function: ${BASE_URL}/${key.pathname}`
   console.log(msg) 

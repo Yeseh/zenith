@@ -1,6 +1,8 @@
 const functionFiles = Deno.readDirSync("./functions")
 
-// TODO: Build this file from Zenith manifest/config 
+// TODO: Build functions.ts from Zenith manifest/config, should be possible to build this file from the API
+// Generates a file called 'functions.ts' that is imported by zenith-main
+// This file makes it possible to cache all dependencies at image build time, improving coldstarts
 
 const imports: Array<string> = [];
 const sets: Array<string> = [];
