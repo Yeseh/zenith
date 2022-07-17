@@ -1,23 +1,9 @@
 package runtime
 
 import (
-	"context"
-
 	"github.com/docker/docker/api/types"
-	"github.com/docker/docker/client"
 	"github.com/gofiber/fiber/v2"
 )
-
-type DockerContext struct {
-	Client *client.Client
-	Ctx    context.Context
-}
-
-type CreateImageResponse struct {
-	Success     bool     `json:"success"`
-	ImageTags   []string `json:"imageTags"`
-	BuildStream string   `json:"buildStream"`
-}
 
 func listContainersHandler(docker DockerContext) func(*fiber.Ctx) error {
 	return func(c *fiber.Ctx) error {
@@ -27,6 +13,18 @@ func listContainersHandler(docker DockerContext) func(*fiber.Ctx) error {
 		}
 
 		return c.Status(200).JSON(containers)
+	}
+}
+
+// Lists all zenith-app images currently in the registry
+func listImagesHandler(docker DockerContext) func(*fiber.Ctx) error {
+	return func(c *fiber.Ctx) error {
+		images, err := ListImages(docker)
+		if err != nil {
+			return c.SendStatus(400)
+		}
+
+		return c.Status(200).JSON(images)
 	}
 }
 
